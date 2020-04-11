@@ -4,6 +4,10 @@
 #include <stdint.h>
 #include <math.h>
 
+// for musl
+double floor_musl(double x);
+double scalbn_musl(double x, int n);
+
 // from float.h
 #define FLT_TRUE_MIN 1.40129846432481707092e-45F
 #define FLT_MIN 1.17549435082228750797e-38F

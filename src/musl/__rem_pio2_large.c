@@ -306,8 +306,8 @@ recompute:
 	}
 
 	/* compute n */
-	z  = scalbn(z,q0);       /* actual value of z */
-	z -= 8.0*floor(z*0.125); /* trim off integer >= 8 */
+	z  = scalbn_musl(z,q0);       /* actual value of z */
+	z -= 8.0*floor_musl(z*0.125); /* trim off integer >= 8 */
 	n  = (int32_t)z;
 	z -= (double)n;
 	ih = 0;
@@ -342,7 +342,7 @@ recompute:
 		if (ih == 2) {
 			z = 1.0 - z;
 			if (carry != 0)
-				z -= scalbn(1.0,q0);
+				z -= scalbn_musl(1.0,q0);
 		}
 	}
 
@@ -373,7 +373,7 @@ recompute:
 			q0 -= 24;
 		}
 	} else { /* break z into 24-bit if necessary */
-		z = scalbn(z,-q0);
+		z = scalbn_musl(z,-q0);
 		if (z >= 0x1p24) {
 			fw = (double)(int32_t)(0x1p-24*z);
 			iq[jz] = (int32_t)(z - 0x1p24*fw);
@@ -385,7 +385,7 @@ recompute:
 	}
 
 	/* convert integer "bit" chunk to floating-point value */
-	fw = scalbn(1.0,q0);
+	fw = scalbn_musl(1.0,q0);
 	for (i=jz; i>=0; i--) {
 		q[i] = fw*(double)iq[i];
 		fw *= 0x1p-24;

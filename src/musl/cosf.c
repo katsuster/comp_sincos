@@ -23,7 +23,7 @@ c2pio2 = 2*M_PI_2, /* 0x400921FB, 0x54442D18 */
 c3pio2 = 3*M_PI_2, /* 0x4012D97C, 0x7F3321D2 */
 c4pio2 = 4*M_PI_2; /* 0x401921FB, 0x54442D18 */
 
-float cosf(float x)
+float cosf_musl(float x)
 {
 	double y;
 	uint32_t ix;

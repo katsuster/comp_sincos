@@ -3,6 +3,10 @@
 #include <stdint.h>
 #include <stdio.h>
 
+// musl
+float sinf_musl(float);
+float cosf_musl(float);
+
 #define THREADS    8
 
 #define MAKE_PATTERN(exp, test, accept) \
@@ -31,7 +35,9 @@ struct workitem {
 
 struct test_pattern tests[] = {
 	MAKE_PATTERN(sin, sinf, 1),
+	MAKE_PATTERN(sin, sinf_musl, 1),
 	MAKE_PATTERN(cos, cosf, 1),
+	MAKE_PATTERN(cos, cosf_musl, 1),
 	MAKE_PATTERN(tan, tanf, 3),
 	{0},
 };
