@@ -75,6 +75,7 @@ dnl ----------
 AC_CONFIG_FILES([Makefile
 	src/Makefile
 	src/musl/Makefile
+	src/newlib/Makefile
 	])
 
 AC_OUTPUT()
