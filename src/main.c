@@ -6,6 +6,7 @@
 // musl
 float sinf_musl(float);
 float cosf_musl(float);
+float tanf_musl(float);
 
 #define THREADS    8
 
@@ -39,6 +40,7 @@ struct test_pattern tests[] = {
 	MAKE_PATTERN(cos, cosf, 1),
 	MAKE_PATTERN(cos, cosf_musl, 1),
 	MAKE_PATTERN(tan, tanf, 3),
+	MAKE_PATTERN(tan, tanf_musl, 3),
 	{0},
 };
 
