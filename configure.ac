@@ -22,6 +22,7 @@ AC_PROG_CC()
 AM_PROG_CC_C_O()
 AC_PROG_INSTALL()
 AC_PROG_LN_S()
+AC_PROG_RANLIB()
 
 
 dnl ----------
@@ -71,6 +72,9 @@ fi
 dnl ----------
 dnl  Specify the Makefile
 dnl ----------
-AC_CONFIG_FILES([Makefile src/Makefile])
+AC_CONFIG_FILES([Makefile
+	src/Makefile
+	src/musl/Makefile
+	])
 
 AC_OUTPUT()
