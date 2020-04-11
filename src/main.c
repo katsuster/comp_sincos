@@ -2,6 +2,8 @@
 #include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <time.h>
+#include <sys/time.h>
 
 // musl
 float sinf_musl(float);
@@ -84,13 +86,20 @@ int test_range(uint32_t st, uint32_t ed, struct test_pattern *pat)
 
 void *tmain(void *arg)
 {
+	struct timeval tv_st, tv_ed, tv_ela;
 	struct workitem *item = arg;
 	int res;
 
+	gettimeofday(&tv_st, NULL);
 	res = test_range(item->st, item->ed, item->pat);
-	printf("%10s: %08x-%08x: diff<=%d, %s\n", item->pat->name,
-		item->st, item->ed, item->pat->accept_diff,
-		(res == 0) ? "OK!!" : "NG!!");
+	gettimeofday(&tv_ed, NULL);
+	timersub(&tv_ed, &tv_st, &tv_ela);
+
+	printf("%16s: %08x-%08x: diff<=%d, %s, %d.%06d[s]\n",
+		item->pat->name, item->st, item->ed,
+		item->pat->accept_diff,
+		(res == 0) ? "OK!!" : "NG!!",
+		(int)tv_ela.tv_sec, (int)tv_ela.tv_usec);
 
 	return NULL;
 }
