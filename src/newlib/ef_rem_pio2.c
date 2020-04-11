@@ -137,7 +137,7 @@ pio2_3t =  6.1232342629e-17; /* 0x248d3132 */
 	    }
 	}
 	if(ix<=0x43490f80) { /* |x| ~<= 2^7*(pi/2), medium size */
-	    t  = fabsf(x);
+	    t  = fabsf_newlib(x);
 	    n  = (__int32_t) (t*invpio2+half);
 	    fn = (float)n;
 	    r  = t-fn*pio2_1;

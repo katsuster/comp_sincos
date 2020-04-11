@@ -34,9 +34,9 @@ huge   = 1.0e+30,
 tiny   = 1.0e-30;
 
 #ifdef __STDC__
-	float scalbnf (float x, int n)
+	float scalbnf_newlib (float x, int n)
 #else
-	float scalbnf (x,n)
+	float scalbnf_newlib (x,n)
 	float x; int n;
 #endif
 {
@@ -57,13 +57,13 @@ tiny   = 1.0e-30;
             if (n< -50000) return tiny*x; 	/*underflow*/
         }
         k = k+n; 
-        if (k > FLT_LARGEST_EXP) return huge*copysignf(huge,x); /* overflow  */
+        if (k > FLT_LARGEST_EXP) return huge*copysignf_newlib(huge,x); /* overflow  */
         if (k > 0) 				/* normal result */
 	    {SET_FLOAT_WORD(x,(ix&0x807fffff)|(k<<23)); return x;}
         if (k < FLT_SMALLEST_EXP) {
             if (n > OVERFLOW_INT) 	/* in case integer overflow in n+k */
-		return huge*copysignf(huge,x);	/*overflow*/
-	    else return tiny*copysignf(tiny,x);	/*underflow*/
+		return huge*copysignf_newlib(huge,x);	/*overflow*/
+	    else return tiny*copysignf_newlib(tiny,x);	/*underflow*/
         }
         k += 25;				/* subnormal result */
 	SET_FLOAT_WORD(x,(ix&0x807fffff)|(k<<23));
@@ -80,7 +80,7 @@ tiny   = 1.0e-30;
 	int n;
 #endif
 {
-	return (double) scalbnf((float) x, n);
+	return (double) scalbnf_newlib((float) x, n);
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */

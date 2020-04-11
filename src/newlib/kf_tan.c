@@ -51,7 +51,7 @@ T[] =  {
 	ix = hx&0x7fffffff;	/* high word of |x| */
 	if(ix<0x31800000)			/* x < 2**-28 */
 	    {if((int)x==0) {			/* generate inexact */
-		if((ix|(iy+1))==0) return one/fabsf(x);
+		if((ix|(iy+1))==0) return one/fabsf_newlib(x);
 		else return (iy==1)? x: -one/x;
 	    }
 	    }

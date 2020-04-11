@@ -31,9 +31,9 @@ static float huge = 1.0e30;
 #endif
 
 #ifdef __STDC__
-	float floorf(float x)
+	float floorf_newlib(float x)
 #else
-	float floorf(x)
+	float floorf_newlib(x)
 	float x;
 #endif
 {
@@ -74,7 +74,7 @@ static float huge = 1.0e30;
 	double x;
 #endif
 {
-	return (double) floorf((float) x);
+	return (double) floorf_newlib((float) x);
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */

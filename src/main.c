@@ -10,6 +10,11 @@ float sinf_musl(float);
 float cosf_musl(float);
 float tanf_musl(float);
 
+// newlib
+float sinf_newlib(float);
+float cosf_newlib(float);
+float tanf_newlib(float);
+
 #define THREADS    8
 
 #define MAKE_PATTERN(exp, test, accept) \
@@ -39,10 +44,13 @@ struct workitem {
 struct test_pattern tests[] = {
 	MAKE_PATTERN(sin, sinf, 1),
 	MAKE_PATTERN(sin, sinf_musl, 1),
+	MAKE_PATTERN(sin, sinf_newlib, 1),
 	MAKE_PATTERN(cos, cosf, 1),
 	MAKE_PATTERN(cos, cosf_musl, 1),
+	MAKE_PATTERN(cos, cosf_newlib, 1),
 	MAKE_PATTERN(tan, tanf, 3),
 	MAKE_PATTERN(tan, tanf_musl, 3),
+	MAKE_PATTERN(tan, tanf_newlib, 3),
 	{0},
 };
 

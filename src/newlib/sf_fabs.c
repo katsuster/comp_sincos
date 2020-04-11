@@ -20,9 +20,9 @@
 #include "fdlibm.h"
 
 #ifdef __STDC__
-	float fabsf(float x)
+	float fabsf_newlib(float x)
 #else
-	float fabsf(x)
+	float fabsf_newlib(x)
 	float x;
 #endif
 {
@@ -41,7 +41,7 @@
 	double x;
 #endif
 {
-	return (double) fabsf((float) x);
+	return (double) fabsf_newlib((float) x);
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */

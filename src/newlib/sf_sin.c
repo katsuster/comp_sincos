@@ -17,9 +17,9 @@
 #if __OBSOLETE_MATH
 
 #ifdef __STDC__
-	float sinf(float x)
+	float sinf_newlib(float x)
 #else
-	float sinf(x)
+	float sinf_newlib(x)
 	float x;
 #endif
 {
@@ -57,7 +57,7 @@
 	double x;
 #endif
 {
-	return (double) sinf((float) x);
+	return (double) sinf_newlib((float) x);
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */

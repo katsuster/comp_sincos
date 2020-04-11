@@ -22,9 +22,9 @@
 #include "fdlibm.h"
 
 #ifdef __STDC__
-	float copysignf(float x, float y)
+	float copysignf_newlib(float x, float y)
 #else
-	float copysignf(x,y)
+	float copysignf_newlib(x,y)
 	float x,y;
 #endif
 {
@@ -44,7 +44,7 @@
 	double x,y;
 #endif
 {
-	return (double) copysignf((float) x, (float) y);
+	return (double) copysignf_newlib((float) x, (float) y);
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */

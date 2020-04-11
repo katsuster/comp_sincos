@@ -16,9 +16,9 @@
 #include "fdlibm.h"
 
 #ifdef __STDC__
-	float tanf(float x)
+	float tanf_newlib(float x)
 #else
-	float tanf(x)
+	float tanf_newlib(x)
 	float x;
 #endif
 {
@@ -51,7 +51,7 @@
 	double x;
 #endif
 {
-	return (double) tanf((float) x);
+	return (double) tanf_newlib((float) x);
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */

@@ -17,9 +17,9 @@
 #if __OBSOLETE_MATH
 
 #ifdef __STDC__
-	float cosf(float x)
+	float cosf_newlib(float x)
 #else
-	float cosf(x)
+	float cosf_newlib(x)
 	float x;
 #endif
 {
@@ -57,7 +57,7 @@
 	double x;
 #endif
 {
-	return (double) cosf((float) x);
+	return (double) cosf_newlib((float) x);
 }
 
 #endif /* defined(_DOUBLE_IS_32BITS) */

@@ -91,8 +91,8 @@ recompute:
 	}
 
     /* compute n */
-	z  = scalbnf(z,(int)q0);	/* actual value of z */
-	z -= (float)8.0*floorf(z*(float)0.125);	/* trim off integer >= 8 */
+	z  = scalbnf_newlib(z,(int)q0);	/* actual value of z */
+	z -= (float)8.0*floorf_newlib(z*(float)0.125);	/* trim off integer >= 8 */
 	n  = (__int32_t) z;
 	z -= (float)n;
 	ih = 0;
@@ -124,7 +124,7 @@ recompute:
 	    }
 	    if(ih==2) {
 		z = one - z;
-		if(carry!=0) z -= scalbnf(one,(int)q0);
+		if(carry!=0) z -= scalbnf_newlib(one,(int)q0);
 	    }
 	}
 
@@ -150,7 +150,7 @@ recompute:
 	    jz -= 1; q0 -= 8;
 	    while(iq[jz]==0) { jz--; q0-=8;}
 	} else { /* break z into 8-bit if necessary */
-	    z = scalbnf(z,-(int)q0);
+	    z = scalbnf_newlib(z,-(int)q0);
 	    if(z>=two8) { 
 		fw = (float)((__int32_t)(twon8*z));
 		iq[jz] = (__int32_t)(z-two8*fw);
@@ -160,7 +160,7 @@ recompute:
 	}
 
     /* convert integer "bit" chunk to floating-point value */
-	fw = scalbnf(one,(int)q0);
+	fw = scalbnf_newlib(one,(int)q0);
 	for(i=jz;i>=0;i--) {
 	    q[i] = fw*(float)iq[i]; fw*=twon8;
 	}
