@@ -118,8 +118,8 @@ hidden float  __cosdf(double);
 hidden float  __tandf(double,int);
 hidden float  __expo2f(float,float);
 
-hidden float  kernel_sinf(float,float,int);
-hidden float  kernel_cosf(float,float);
-hidden float  kernel_tanf(float,float,int);
+hidden float  kernel_sinf(float);
+hidden float  kernel_cosf(float);
+hidden float  kernel_tanf(float, int);
 
 #endif

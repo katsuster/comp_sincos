@@ -35,10 +35,11 @@ T[] =  {
   2.5907305826e-05, /* 0x37d95384 */
 };
 
-float kernel_tanf(float x, float y, int iy)
+float kernel_tanf(float x, int iy)
 {
 	float z,r,v,w,s;
 	int32_t ix,hx;
+	float y = 0.0;
 	GET_FLOAT_WORD(hx,x);
 	ix = hx&0x7fffffff;	/* high word of |x| */
 	if(ix<0x31800000)			/* x < 2**-28 */

@@ -24,10 +24,11 @@ C4  = -2.7557314297e-07, /* 0xb493f27c */
 C5  =  2.0875723372e-09, /* 0x310f74f6 */
 C6  = -1.1359647598e-11; /* 0xad47d74e */
 
-float kernel_cosf(float x, float y)
+float kernel_cosf(float x)
 {
 	float a,hz,z,r,qx;
 	int32_t ix;
+	float y = 0.0;
 	GET_FLOAT_WORD(ix,x);
 	ix &= 0x7fffffff;			/* ix = |x|'s high word*/
 	if(ix<0x32000000) {			/* if x < 2**27 */
