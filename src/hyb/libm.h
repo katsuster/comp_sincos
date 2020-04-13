@@ -5,6 +5,7 @@
 #include <math.h>
 
 // for hyb
+float fabsf_hyb(float x);
 double floor_hyb(double x);
 double scalbn_hyb(double x, int n);
 
@@ -104,6 +105,11 @@ do {                                              \
   (w) = asuint(d);                                \
 } while (0)
 
+#define SET_FLOAT_WORD(d,w)                       \
+do {                                              \
+  (d) = asfloat(w);                               \
+} while (0)
+
 hidden int    __rem_pio2_large(double*,double*,int,int,int);
 
 hidden int    __rem_pio2f(float,double*);
@@ -111,5 +117,9 @@ hidden float  __sindf(double);
 hidden float  __cosdf(double);
 hidden float  __tandf(double,int);
 hidden float  __expo2f(float,float);
+
+hidden float  kernel_sinf(float,float,int);
+hidden float  kernel_cosf(float,float);
+hidden float  kernel_tanf(float,float,int);
 
 #endif

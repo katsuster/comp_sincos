@@ -13,12 +13,9 @@
  * ====================================================
  */
 
-#include "fdlibm.h"
-#ifdef __STDC__
+#include "libm.h"
+
 static const float 
-#else
-static float 
-#endif
 one   =  1.0000000000e+00, /* 0x3f800000 */
 pio4  =  7.8539812565e-01, /* 0x3f490fda */
 pio4lo=  3.7748947079e-08, /* 0x33222168 */
@@ -38,12 +35,7 @@ T[] =  {
   2.5907305826e-05, /* 0x37d95384 */
 };
 
-#ifdef __STDC__
-	float __kernel_tanf(float x, float y, int iy)
-#else
-	float __kernel_tanf(x, y, iy)
-	float x,y; int iy;
-#endif
+float kernel_tanf(float x, float y, int iy)
 {
 	float z,r,v,w,s;
 	__int32_t ix,hx;
@@ -51,7 +43,7 @@ T[] =  {
 	ix = hx&0x7fffffff;	/* high word of |x| */
 	if(ix<0x31800000)			/* x < 2**-28 */
 	    {if((int)x==0) {			/* generate inexact */
-		if((ix|(iy+1))==0) return one/fabsf_newlib(x);
+		if((ix|(iy+1))==0) return one/fabsf_hyb(x);
 		else return (iy==1)? x: -one/x;
 	    }
 	    }
