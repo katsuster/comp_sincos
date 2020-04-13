@@ -27,7 +27,7 @@ C6  = -1.1359647598e-11; /* 0xad47d74e */
 float kernel_cosf(float x, float y)
 {
 	float a,hz,z,r,qx;
-	__int32_t ix;
+	int32_t ix;
 	GET_FLOAT_WORD(ix,x);
 	ix &= 0x7fffffff;			/* ix = |x|'s high word*/
 	if(ix<0x32000000) {			/* if x < 2**27 */
