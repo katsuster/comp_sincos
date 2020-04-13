@@ -76,6 +76,7 @@ AC_CONFIG_FILES([Makefile
 	src/Makefile
 	src/musl/Makefile
 	src/newlib/Makefile
+	src/hyb/Makefile
 	])
 
 AC_OUTPUT()
