@@ -43,15 +43,15 @@ float tanf_hyb(float x)
 	}
 	if (ix <= 0x407b53d1) {  /* |x| ~<= 5*pi/4 */
 		if (ix <= 0x4016cbe3)  /* |x| ~<= 3pi/4 */
-			return __tandf((sign ? x+t1pio2 : x-t1pio2), 1);
+			return kernel_tanf((sign ? x+t1pio2 : x-t1pio2), -1);
 		else
-			return __tandf((sign ? x+t2pio2 : x-t2pio2), 0);
+			return kernel_tanf((sign ? x+t2pio2 : x-t2pio2), 1);
 	}
 	if (ix <= 0x40e231d5) {  /* |x| ~<= 9*pi/4 */
 		if (ix <= 0x40afeddf)  /* |x| ~<= 7*pi/4 */
-			return __tandf((sign ? x+t3pio2 : x-t3pio2), 1);
+			return kernel_tanf((sign ? x+t3pio2 : x-t3pio2), -1);
 		else
-			return __tandf((sign ? x+t4pio2 : x-t4pio2), 0);
+			return kernel_tanf((sign ? x+t4pio2 : x-t4pio2), 1);
 	}
 
 	/* tan(Inf or NaN) is NaN */
