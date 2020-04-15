@@ -42,12 +42,6 @@ float kernel_tanf(float x, int iy)
 	float y = 0.0;
 	GET_FLOAT_WORD(hx,x);
 	ix = hx&0x7fffffff;	/* high word of |x| */
-	if(ix<0x31800000)			/* x < 2**-28 */
-	    {if((int)x==0) {			/* generate inexact */
-		if((ix|(iy+1))==0) return one/fabsf_hyb(x);
-		else return (iy==1)? x: -one/x;
-	    }
-	    }
 	if(ix>=0x3f2ca140) { 			/* |x|>=0.6744 */
 	    if(hx<0) {x = -x; y = -y;}
 	    z = pio4-x;

@@ -27,13 +27,8 @@ S6  =  1.5896910177e-10; /* 0x2f2ec9d3 */
 float kernel_sinf(float x)
 {
 	float z,r,v;
-	int32_t ix;
 	float y = 0.0;
 	int iy = 0;
-	GET_FLOAT_WORD(ix,x);
-	ix &= 0x7fffffff;			/* high word of x */
-	if(ix<0x32000000)			/* |x| < 2**-27 */
-	   {if((int)x==0) return x;}		/* generate inexact */
 	z	=  x*x;
 	v	=  z*x;
 	r	=  S2+z*(S3+z*(S4+z*(S5+z*S6)));

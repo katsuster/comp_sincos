@@ -31,9 +31,6 @@ float kernel_cosf(float x)
 	float y = 0.0;
 	GET_FLOAT_WORD(ix,x);
 	ix &= 0x7fffffff;			/* ix = |x|'s high word*/
-	if(ix<0x32000000) {			/* if x < 2**27 */
-	    if(((int)x)==0) return one;		/* generate inexact */
-	}
 	z  = x*x;
 	r  = z*(C1+z*(C2+z*(C3+z*(C4+z*(C5+z*C6)))));
 	if(ix < 0x3e99999a) 			/* if |x| < 0.3 */ 
